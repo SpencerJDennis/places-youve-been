@@ -7,21 +7,18 @@ function Places() {
 //User Logic
 
 function showMiami() {
-  console.log("show miami ran");
   document.getElementById("contact-details").removeAttribute("class");
   document.getElementById("location").innerText = miami.location
   document.getElementById("season").innerText = miami.season
   document.getElementById("landmarks").innerText = miami.landmarks
 }
 function showTokyo() {
-  console.log("show tokyo ran")
   document.getElementById("contact-details").removeAttribute("class");
   document.getElementById("location").innerText = tokyo.location
   document.getElementById("season").innerText = tokyo.season
   document.getElementById("landmarks").innerText = tokyo.landmarks
 }
 function showCleveland() {
-  console.log("show cleveland ran")
   document.getElementById("contact-details").removeAttribute("class");
   document.getElementById("location").innerText = cleveland.location
   document.getElementById("season").innerText = cleveland.season
