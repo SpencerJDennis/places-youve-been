@@ -1,46 +1,53 @@
-//build a places object
-// build each place object inside of it
-
 // Business Logic for Places ---------
-function places() {
+function Places() {
   this.destinations = {};
   this.currentId = 0;
 }
+
+//User Logic
+
 function showMiami() {
   console.log("show miami ran");
+  document.getElementById("contact-details").removeAttribute("class");
+  document.getElementById("location").innerText = miami.location
+  document.getElementById("season").innerText = miami.season
+  document.getElementById("landmarks").innerText = miami.landmarks
 }
 function showTokyo() {
   console.log("show tokyo ran")
+  document.getElementById("contact-details").removeAttribute("class");
+  document.getElementById("location").innerText = tokyo.location
+  document.getElementById("season").innerText = tokyo.season
+  document.getElementById("landmarks").innerText = tokyo.landmarks
 }
 function showCleveland() {
   console.log("show cleveland ran")
+  document.getElementById("contact-details").removeAttribute("class");
+  document.getElementById("location").innerText = cleveland.location
+  document.getElementById("season").innerText = cleveland.season
+  document.getElementById("landmarks").innerText = cleveland.landmarks
 }
 
-let miami = new Destination("Miami", "Spring", "The Beach")
-let tokyo = new Destination("Tokyo", "Spring", "Skytree")
-let cleveland = new Destination("Cleveland", "Summer", "Rock and Roll Hall of Fame")
-places.addDestination(miami);
-places.addDestination(tokyo);
-places.addDestination(cleveland);
+//Business Logic for ID
 
-places.prototype.addDestination = function(destination) {
+Places.prototype.addDestination = function(destination) {
   destination.id = this.assignId();
   this.destinations[destination.id] = destination;
 };
 
-places.prototype.assignId = function() {
+Places.prototype.assignId = function() {
   this.currentId += 1;
   return this.currentId;
 };
 
-places.prototype.findDestination = function(id) {
+Places.prototype.findDestination = function(id) {
   if (this.destinations[id] !== undefined) {
     return this.destinations[id];
   }
   return false;
 };
 
-places.prototype.deleteDestination = function(id) {
+Places.prototype.deleteDestination = function(id) {
   if (this.destinations[id] === undefined) {
     return false;
   }
@@ -48,14 +55,17 @@ places.prototype.deleteDestination = function(id) {
   return true;
 };
 
-// Business Logic for Contacts ---------
+// Business Logic for Destinations ---------
 function Destination(location, season, landmarks) {
   this.location = location;
   this.season = season;
   this.landmarks = landmarks;
 }
 
-/*
-Destination.prototype.fullName = function() {
-  return this.firstName + " " + this.lastName;
-}; */
+let places = new Places();
+let miami = new Destination("Miami", "Spring", "The Beach")
+let tokyo = new Destination("Tokyo", "Spring", "Skytree")
+let cleveland = new Destination("Cleveland", "Summer", "Rock and Roll Hall of Fame")
+places.addDestination(tokyo);
+places.addDestination(cleveland);
+places.addDestination(miami);
